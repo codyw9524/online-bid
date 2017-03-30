@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<title>Login and Registration</title>
+	<!-- load dependencies -->
+	<script src="jquery/dist/jquery.min.js"></script>
+	<script src="angular/angular.min.js"></script>
+	<script src="angular-route/angular-route.min.js"></script>
+	<script src="angular-cookies/angular-cookies.min.js"></script>
+	<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<!-- load Angular files -->
+	<script src="config/app.js"></script>
+	<script src="controllers/users_controller.js"></script>
+	<script src="controllers/bids_controller.js"></script>
+	<script src="factories/user_factory.js"></script>
+	<script src="factories/bid_factory.js"></script>
+	<!-- load CSS files -->
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="angular-bootstrap/ui-bootstrap-csp.css">
+	<link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+<body>
+	<div class="container" ng-view>
+	
+	</div>
+</body>
+</html>

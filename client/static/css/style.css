@@ -1,0 +1,16 @@
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.error{
+	color: red;
+}
+.header_link{
+	margin: 1rem;
+}
+.pull_right{
+	float: right;
+}
+.bid_img{
+	min-width: 160px;
+	max-height: 160px;
+	display: block;
+	margin: 5px auto;
+}

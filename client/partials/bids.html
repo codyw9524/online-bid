@@ -1,0 +1,26 @@
+<div class="row" ng-controller="BidsController as BC" ng-init="BC.index()">
+	<div class="col-sm-12">
+		<a class="pull_right header_link" href="" ng-click="UC.logout()">Logout</a>
+	</div>
+	<div class="col-sm-12">
+		<h1>Online Bids</h1>
+	</div>
+	<div class="col-sm-4" ng-repeat="bid in BC.bids">
+		<h5 class="text-center">{{bid.product.name}}</h5>
+		<img class="bid_img text-center" src="{{bid.product.image}}">
+		<form class="form-inline" ng-submit="BC.bid(BC.newBid)">
+			<div class="form-group">
+				<label class="sr-only">Amount (in dollars)</label>
+				<div class="input-group">
+					<div class="input-group-addon">$</div>
+					<input type="number" ng-model="BC.newBid[bid._id]" ng-value="bid.current" min="{{bid.current}}" step="1" class="form-control">
+					<div class="input-group-addon">.00</div>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">&nbsp;Bid&nbsp;</button>
+		</form>
+		<p class="error" ng-bind="BC.errors[bid._id]"></p>
+		<h3><small>Current High Bid: ${{bid.current}}.00</small></h3>
+		<h3><small>Current Bidder: {{bid._user.name}}</small></h3>
+	</div>
+</div>
