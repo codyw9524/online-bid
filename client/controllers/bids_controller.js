@@ -1,11 +1,13 @@
 myApp.controller('BidsController', function(BidFactory, UserFactory){
+
 	console.log('instanciating BidsController...');
-	console.log('socket: ', socket)
-	var self = this;
+
+	let self = this;
 
 	self.errors = {};
 
 	self.index = function(){
+		self.errors = {};
 		BidFactory.index(function(res){
 			self.bids = res.data;
 			if(self.bids.length === 0){
@@ -32,8 +34,6 @@ myApp.controller('BidsController', function(BidFactory, UserFactory){
 		});
 	}
 
-	socket.on('updateBids', function(){
-		self.index();
-	});
+	socket.on('updateBids', self.index);
 
 });
