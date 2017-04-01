@@ -11,4 +11,4 @@ fs.readdirSync(models_path).forEach(function(file){
 	if(file.indexOf('.js') != -1){
 		require(models_path + '/' + file);
 	}
-})
+});

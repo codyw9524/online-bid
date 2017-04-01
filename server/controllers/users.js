@@ -71,5 +71,3 @@ module.exports = {
 		})
 	}
 }
-
-//bcrypt.compareSync(password, this.password)

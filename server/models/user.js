@@ -39,7 +39,4 @@ UserSchema.pre('save', function(done){
 	done();
 })
 
-var User = mongoose.model('User', UserSchema);
-
-//bcrypt.hashSync(password, bcrypt.genSaltSync(8))
-//bcrypt.compareSync(password, this.password)
+mongoose.model('User', UserSchema);

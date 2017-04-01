@@ -22,7 +22,6 @@ myApp.controller('UsersController', function(UserFactory, $cookies, $location){
 	self.login = function(loginUser){
 		self.loginErrors = [];
 		UserFactory.login(loginUser, function(res){
-			console.log(res);
 			if(res.data.errors){
 				if(loginUser){
 					loginUser.email = "";
@@ -35,7 +34,7 @@ myApp.controller('UsersController', function(UserFactory, $cookies, $location){
 					})
 				}
 			} else {
-				$location.url('/bids')
+				$location.url('/bids');
 			}
 		})
 	}

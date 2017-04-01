@@ -11,7 +11,10 @@ myApp.controller('BidsController', function(BidFactory, UserFactory){
 		BidFactory.index(function(res){
 			self.bids = res.data;
 			if(self.bids.length === 0){
-				BidFactory.create(self.index);
+				BidFactory.create(function(res){
+					socket.emit('startTimer', {});
+					self.index();
+				});
 			}
 		})
 	}
@@ -20,8 +23,8 @@ myApp.controller('BidsController', function(BidFactory, UserFactory){
 		self.errors = {};
 		let bidObj = {}
 		for(key in newBid){
-			bidObj.bid_id = key
-			bidObj.value = newBid[key]
+			bidObj.bid_id = key;
+			bidObj.value = newBid[key];
 		}
 		bidObj._user = UserFactory.user;
 		BidFactory.bid(bidObj, function(res){
@@ -35,5 +38,10 @@ myApp.controller('BidsController', function(BidFactory, UserFactory){
 	}
 
 	socket.on('updateBids', self.index);
+
+	socket.on('updateClock', function(data){
+		self.minutes = data.minutes;
+		self.seconds = data.seconds;
+	})
 
 });

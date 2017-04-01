@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-var Users = require('./../controllers/users')
-var Bids = require('./../controllers/bids')
+var Users = require('./../controllers/users');
+var Bids = require('./../controllers/bids');
 
 module.exports = function(app){
 	app.get('/users', Users.index);
@@ -11,5 +11,5 @@ module.exports = function(app){
 	app.get('/bids', Bids.index);
 	app.post('/bids', Bids.create);
 	app.delete('/bids', Bids.destroy);
-	app.put('/bids', Bids.update)
-}
+	app.put('/bids', Bids.update);
+};
