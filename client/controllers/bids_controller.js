@@ -1,4 +1,4 @@
-myApp.controller('BidsController', function(BidFactory, UserFactory){
+myApp.controller('BidsController', function(BidFactory, UserFactory, $scope, $timeout, $location){
 
 	console.log('instanciating BidsController...');
 
@@ -9,9 +9,11 @@ myApp.controller('BidsController', function(BidFactory, UserFactory){
 	self.index = function(){
 		self.errors = {};
 		BidFactory.index(function(res){
+			console.log('self.bids: ', self.bids);
 			self.bids = res.data;
 			if(self.bids.length === 0){
 				BidFactory.create(function(res){
+					console.log('making bids...');
 					socket.emit('startTimer', {});
 					self.index();
 				});
@@ -40,8 +42,17 @@ myApp.controller('BidsController', function(BidFactory, UserFactory){
 	socket.on('updateBids', self.index);
 
 	socket.on('updateClock', function(data){
+		console.log('updating clock...', data);
 		self.minutes = data.minutes;
 		self.seconds = data.seconds;
+		$timeout(function(){
+			$scope.$apply();
+		})
+	})
+
+	socket.on('endBid', function(data){
+		console.log('ending bid');
+		$location.url('/results');
 	})
 
 });

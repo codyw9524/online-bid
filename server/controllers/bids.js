@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
+
 var Bid = mongoose.model('Bid');
 var User = mongoose.model('User');
+var Product = mongoose.model('Product');
+var Result = mongoose.model('Result');
+
 var products = [
 	{name: 'Macbook Pro', image: '/static/img/macbook_pro.jpeg'},
 	{name: 'Razer Blade', image: '/static/img/razer_blade.png'},
@@ -11,6 +15,10 @@ var products = [
 ]
 
 module.exports = {
+	// createProducts: function(req, res){
+		// loop through products array and make pProducts in DB
+		// create Mongoose relationships for Products
+	// }
 	index: function(req, res){
 		Bid.find({}).populate('_user').exec(function(err, bids){
 			if(err){

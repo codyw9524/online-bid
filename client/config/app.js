@@ -13,6 +13,10 @@ myApp.config(function($routeProvider){
 			templateUrl: '/partials/bids.html',
 			controller: 'UsersController as UC'
 		})
+		.when('/results', {
+			templateUrl: '/partials/results.html',
+			controller: 'UsersController as UC'
+		})
 		.otherwise({
 			redirectTo: '/'
 		})

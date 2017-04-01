@@ -1,0 +1,10 @@
+<div class="row" ng-controller="ResultsController as RC" ng-init="RC.create()">
+	<div class="col-sm-12">
+		<a class="pull_right header_link" href="" ng-click="UC.logout()">Logout</a>
+	</div>
+	<div class="col-sm-12" ng-repeat="result in RC.results">
+		<h3>Winner: {{result._user}}</h3>
+		<h3>Price ${{result.price}}.00</h3>
+		<h3>Product: {{result._product.name}}</h3>
+	</div>
+</div>
